@@ -27,21 +27,24 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
   return (
     <Container
       className={clx(
-        "relative w-full overflow-hidden p-4 bg-ui-bg-subtle shadow-elevation-card-rest rounded-large group-hover:shadow-elevation-card-hover transition-shadow ease-in-out duration-150",
+        "relative w-full overflow-hidden bg-white/80 rounded-lg border border-[#2c524c]/10 group-hover:border-[#c26d43]/20 transition-all duration-300 ease-out",
+        "hover:shadow-[0_8px_30px_rgb(44,82,76,0.04)] backdrop-blur-sm",
         className,
         {
-          "aspect-[11/14]": isFeatured,
-          "aspect-[9/16]": !isFeatured && size !== "square",
+          "aspect-[6/9]": isFeatured,
+          "aspect-[2/3]": !isFeatured && size !== "square",
           "aspect-[1/1]": size === "square",
-          "w-[180px]": size === "small",
-          "w-[290px]": size === "medium",
-          "w-[440px]": size === "large",
+          "w-[200px]": size === "small",
+          "w-[300px]": size === "medium",
+          "w-[450px]": size === "large",
           "w-full": size === "full",
         }
       )}
       data-testid={dataTestid}
     >
       <ImageOrPlaceholder image={initialImage} size={size} />
+      {/* Add subtle overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#2c524c]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </Container>
   )
 }
@@ -54,15 +57,15 @@ const ImageOrPlaceholder = ({
     <Image
       src={image}
       alt="Thumbnail"
-      className="absolute inset-0 object-cover object-center"
+      className="absolute inset-0 object-cover object-center transition-transform duration-300 group-hover:scale-105"
       draggable={false}
-      quality={50}
+      quality={85}
       sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
       fill
     />
   ) : (
-    <div className="w-full h-full absolute inset-0 flex items-center justify-center">
-      <PlaceholderImage size={size === "small" ? 16 : 24} />
+    <div className="w-full h-full absolute inset-0 flex items-center justify-center bg-[#f8f7f4]">
+      <PlaceholderImage size={size === "small" ? 20 : 28} className="text-[#2c524c]/30" />
     </div>
   )
 }

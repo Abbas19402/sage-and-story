@@ -71,6 +71,20 @@ module.exports = {
         ],
       },
       keyframes: {
+        float: {
+          '0%, 100%': { 
+            transform: 'translate(0, 0) rotate(0deg)',
+            animationTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+          },
+          '25%': { 
+            transform: 'translate(2px, -8px) rotate(5deg)',
+            animationTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+          },
+          '75%': { 
+            transform: 'translate(-2px, 8px) rotate(-5deg)',
+            animationTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+          }
+        },
         ring: {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
@@ -142,6 +156,7 @@ module.exports = {
         },
       },
       animation: {
+        float: 'float 4s ease-in-out infinite',
         ring: "ring 2.2s cubic-bezier(0.5, 0, 0.5, 1) infinite",
         "fade-in-right":
           "fade-in-right 0.3s cubic-bezier(0.5, 0, 0.5, 1) forwards",
