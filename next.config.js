@@ -30,6 +30,14 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "covers.openlibrary.org",
+      },
+      {
+        protocol: "https",
+        hostname: "images-na.ssl-images-amazon.com",
+      },
+      {
+        protocol: "https",
         hostname: "medusa-server-testing.s3.amazonaws.com",
       },
       {

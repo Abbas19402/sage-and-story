@@ -3,11 +3,23 @@ import Image from 'next/image'
 import Logo from '../../../assets/images/SAS_LOGO_NOBG.png'
 
 const AboutTemplate = () => {
+  const features = [
+    {
+      title: "Curated Selection",
+      description: "Each book in our collection is thoughtfully chosen to inspire, educate, and transport."
+    },
+    {
+      title: "Community Focus",
+      description: "We believe in building connections through shared stories and literary experiences."
+    },
+    {
+      title: "Sustainable Practice",
+      description: "Committed to environmental responsibility in our operations and partnerships."
+    }
+  ]
   return (
     <div className="min-h-screen bg-[#f8f7f4] py-16">
-      {/* Main Content Container */}
       <div className="max-w-[1000px] mx-auto px-6">
-        {/* Header Section */}
         <div className="text-center mb-16">
           <div className="w-32 mx-auto mb-8">
             <Image 
@@ -22,9 +34,7 @@ const AboutTemplate = () => {
           <div className="w-16 h-[2px] bg-[#c26d43] mx-auto"/>
         </div>
 
-        {/* Content Sections */}
         <div className="grid gap-16">
-          {/* Introduction */}
           <section className="prose mx-auto max-w-[700px] text-center">
             <p className="text-lg text-[#4a4a4a] leading-relaxed">
               Welcome to Sage & Story, where every book opens a door to new possibilities. 
@@ -34,7 +44,6 @@ const AboutTemplate = () => {
             </p>
           </section>
 
-          {/* Mission Statement */}
           <section className="bg-white/50 rounded-lg p-8 backdrop-blur-sm">
             <h2 className="text-[#2c524c] font-serif text-2xl mb-6 text-center">
               Our Mission
@@ -47,22 +56,8 @@ const AboutTemplate = () => {
             </p>
           </section>
 
-          {/* Values Grid */}
           <section className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Curated Selection",
-                description: "Each book in our collection is thoughtfully chosen to inspire, educate, and transport."
-              },
-              {
-                title: "Community Focus",
-                description: "We believe in building connections through shared stories and literary experiences."
-              },
-              {
-                title: "Sustainable Practice",
-                description: "Committed to environmental responsibility in our operations and partnerships."
-              }
-            ].map((value, index) => (
+            {features.map((value, index) => (
               <div 
                 key={index}
                 className="bg-white/30 p-6 rounded-lg text-center hover:bg-white/50 transition-colors"
@@ -79,7 +74,6 @@ const AboutTemplate = () => {
         </div>
       </div>
 
-      {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#c26d43]/5 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#2c524c]/5 rounded-full blur-3xl -z-10" />
     </div>

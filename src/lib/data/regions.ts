@@ -13,10 +13,13 @@ export const listRegions = async () => {
   return sdk.client
     .fetch<{ regions: HttpTypes.StoreRegion[] }>(`/store/regions`, {
       method: "GET",
-      next,
-      cache: "force-cache",
+      next: { revalidate: 0 },
+      cache: "no-store",
     })
-    .then(({ regions }) => regions)
+    .then(({ regions }) => {
+      console.log("regions", regions)
+      return regions
+    })
     .catch(medusaError)
 }
 
@@ -28,8 +31,8 @@ export const retrieveRegion = async (id: string) => {
   return sdk.client
     .fetch<{ region: HttpTypes.StoreRegion }>(`/store/regions/${id}`, {
       method: "GET",
-      next,
-      cache: "force-cache",
+      next: { revalidate: 0 },
+      cache: "no-store",
     })
     .then(({ region }) => region)
     .catch(medusaError)

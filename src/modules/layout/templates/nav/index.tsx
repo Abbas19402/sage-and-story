@@ -7,6 +7,7 @@ import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import Image from "next/image"
 import Logo from '@assets/images/SAS_LOGO_NOBG.png'
+import CountrySelectWrapper from "@modules/layout/components/country-select-wrapper"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
@@ -28,7 +29,9 @@ export default async function Nav() {
             </LocalizedClientLink>
           </div>
 
-
+          {/* <div className="hidden small:flex items-center gap-x-6 h-full">
+            <SideMenu regions={regions} />
+          </div> */}
           <div className="flex items-center gap-x-6 h-full justify-end">
             <div className="hidden small:flex items-center gap-x-6 h-full">
               <LocalizedClientLink
@@ -52,6 +55,7 @@ export default async function Nav() {
             >
               <CartButton />
             </Suspense>
+            <CountrySelectWrapper regions={regions} />
           </div>
         </nav>
       </header>
